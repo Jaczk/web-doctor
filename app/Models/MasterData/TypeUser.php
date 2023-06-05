@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TypeUser extends Model
 {
-    use HasFactory, SoftDeletes;
+    use SoftDeletes;
 
     public $table = 'type_user';
 

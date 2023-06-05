@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Appointment extends Model
 {
-    use HasFactory, SoftDeletes;
+    use SoftDeletes;
 
     public $table = 'appointment';
 

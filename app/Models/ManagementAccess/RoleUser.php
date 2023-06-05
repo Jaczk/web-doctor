@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RoleUser extends Model
 {
-    use HasFactory, SoftDeletes;
+    use SoftDeletes;
 
     public $table = 'role_user';
 
