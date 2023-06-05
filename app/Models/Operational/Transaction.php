@@ -2,9 +2,10 @@
 
 namespace App\Models\Operational;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Operational\Appointment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Transaction extends Model
 {
@@ -28,4 +29,11 @@ class Transaction extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    //one to one
+    public function appointment()
+    {
+        // 3 parameter (path model, foreign key, local key atau primary key dari table hasOne or hasMany)
+        return $this->belongsTo(Appointment::class, 'appointment_id', 'id');
+    }
 }
