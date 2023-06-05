@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\ManagementAccess\DetailUser;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
 use App\Models\Operational\Appointment;
@@ -68,5 +69,12 @@ class User extends Authenticatable
     {
         // 2 parameter (path model, foreign key)
         return $this->hasMany(Appointment::class, 'user_id');
+    }
+
+    // one to one
+    public function detail_user()
+    {
+        // 2 parameter (path model, foreign key)
+        return $this->hasOne(DetailUser::class, 'user_id');
     }
 }

@@ -2,10 +2,11 @@
 
 namespace App\Models\ManagementAccess;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use App\Models\MasterData\TypeUser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class DetailUser extends Model
 {
@@ -35,5 +36,12 @@ class DetailUser extends Model
     {
         // 3 parameter (path model, foreign key, local key atau primary key dari table hasOne or hasMany)
         return $this->belongsTo(TypeUser::class, 'type_user_id', 'id');
+    }
+
+    //one to one
+    public function user()
+    {
+        // 3 parameter (path model, foreign key, local key atau primary key dari table hasOne or hasMany)
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }
