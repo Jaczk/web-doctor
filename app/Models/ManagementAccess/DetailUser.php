@@ -3,6 +3,7 @@
 namespace App\Models\ManagementAccess;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\MasterData\TypeUser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -28,4 +29,11 @@ class DetailUser extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    //many to one
+    public function type_user()
+    {
+        // 3 parameter (path model, foreign key, local key atau primary key dari table hasOne or hasMany)
+        return $this->belongsTo(TypeUser::class, 'type_user_id', 'id');
+    }
 }
