@@ -2,9 +2,10 @@
 
 namespace App\Models\Operational;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Operational\Doctor;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Appointment extends Model
 {
@@ -28,4 +29,11 @@ class Appointment extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    //many to one
+    public function doctor()
+    {
+        // 3 parameter (path model, foreign key, local key atau primary key dari table hasOne or hasMany)
+        return $this->belongsTo(Doctor::class, 'doctor_id', 'id');
+    }
 }

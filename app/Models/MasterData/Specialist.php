@@ -28,6 +28,7 @@ class Specialist extends Model
     // one to many
     public function doctor()
     {
+        // 2 parameter (path model, foreign key)
         return $this->hasMany(Doctor::class, 'specialist_id');
     }
 }
