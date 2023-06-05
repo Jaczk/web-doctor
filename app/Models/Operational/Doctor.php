@@ -2,9 +2,10 @@
 
 namespace App\Models\Operational;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\MasterData\Specialist;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Doctor extends Model
 {
@@ -25,4 +26,11 @@ class Doctor extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    //many to one
+    public function specialist()
+    {
+        // 3 parameter (path model, foreign key, local key atau primary key dari table hasOne or hasMany)
+        return $this->belongsTo(Specialist::class, 'specialist_id', 'id');
+    }
 }
