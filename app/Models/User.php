@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\ManagementAccess\DetailUser;
+use App\Models\ManagementAccess\RoleUser;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
 use App\Models\Operational\Appointment;
@@ -76,5 +77,12 @@ class User extends Authenticatable
     {
         // 2 parameter (path model, foreign key)
         return $this->hasOne(DetailUser::class, 'user_id');
+    }
+
+    // one to many
+    public function role_user()
+    {
+        // 2 parameter (path model, foreign key)
+        return $this->hasMany(RoleUser::class, 'user_id');
     }
 }

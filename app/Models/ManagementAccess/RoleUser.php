@@ -2,9 +2,10 @@
 
 namespace App\Models\ManagementAccess;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class RoleUser extends Model
 {
@@ -23,4 +24,11 @@ class RoleUser extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    //one to one
+    public function user()
+    {
+        // 3 parameter (path model, foreign key, local key atau primary key dari table hasOne or hasMany)
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }
