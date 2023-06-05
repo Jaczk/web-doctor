@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
+use App\Models\Operational\Appointment;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -61,4 +62,11 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    // one to many
+    public function appointment()
+    {
+        // 2 parameter (path model, foreign key)
+        return $this->hasMany(Appointment::class, 'user_id');
+    }
 }

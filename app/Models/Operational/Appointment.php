@@ -2,8 +2,9 @@
 
 namespace App\Models\Operational;
 
-use App\Models\MasterData\Consultation;
+use App\Models\User;
 use App\Models\Operational\Doctor;
+use App\Models\MasterData\Consultation;
 use App\Models\Operational\Transaction;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -44,6 +45,13 @@ class Appointment extends Model
     {
         // 3 parameter (path model, foreign key, local key atau primary key dari table hasOne or hasMany)
         return $this->belongsTo(Consultation::class, 'consultation_id', 'id');
+    }
+
+    //many to one
+    public function user()
+    {
+        // 3 parameter (path model, foreign key, local key atau primary key dari table hasOne or hasMany)
+        return $this->belongsTo(User::class, 'consultation_id', 'id');
     }
 
     // one to one
