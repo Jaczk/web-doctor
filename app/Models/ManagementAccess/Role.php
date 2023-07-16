@@ -2,9 +2,11 @@
 
 namespace App\Models\ManagementAccess;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\ManagementAccess\RoleUser;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\ManagementAccess\PermissionRole;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Role extends Model
 {
@@ -22,4 +24,16 @@ class Role extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    public function roleuser()
+    {
+        // 3 parameter (path model, foreign key, local key atau primary key dari table hasOne or hasMany)
+        return $this->hasMany(RoleUser::class, 'role_id', 'id');
+    }
+
+    public function permissionRole()
+    {
+        // 3 parameter (path model, foreign key, local key atau primary key dari table hasOne or hasMany)
+        return $this->hasMany(PermissionRole::class, 'role_id', 'id');
+    }
 }

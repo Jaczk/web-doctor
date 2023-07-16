@@ -3,6 +3,7 @@
 namespace App\Models\ManagementAccess;
 
 use App\Models\User;
+use App\Models\ManagementAccess\Role;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -30,5 +31,11 @@ class RoleUser extends Model
     {
         // 3 parameter (path model, foreign key, local key atau primary key dari table hasOne or hasMany)
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function role()
+    {
+        // 3 parameter (path model, foreign key, local key atau primary key dari table hasOne or hasMany)
+        return $this->belongsTo(Role::class, 'role_id', 'id');
     }
 }

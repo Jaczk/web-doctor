@@ -2,9 +2,11 @@
 
 namespace App\Models\ManagementAccess;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\ManagementAccess\Role;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\ManagementAccess\Permission;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PermissionRole extends Model
 {
@@ -23,4 +25,14 @@ class PermissionRole extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    public function permission()
+    {
+        return $this->belongsTo(Permission::class, 'permission_id', 'id');
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
+    }
 }
