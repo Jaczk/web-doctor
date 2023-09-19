@@ -24,19 +24,19 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=> [
+            'name' => [
                 'required',
                 'string',
                 'max:255',
             ],
-            'email'=> [
+            'email' => [
                 'required',
                 'email',
                 'max:255',
                 'unique:users',
                 'dns'
             ],
-            'password'=> [
+            'password' => [
                 'string',
                 'min:8',
                 'confirmed',

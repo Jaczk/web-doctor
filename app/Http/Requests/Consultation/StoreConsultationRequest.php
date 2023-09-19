@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Consultation;
 
+use App\Models\MasterData\Consultation;
 use Illuminate\Foundation\Http\FormRequest;
+use Symfony\Component\HttpFoundation\Response;
 
 class StoreConsultationRequest extends FormRequest
 {
@@ -11,8 +13,8 @@ class StoreConsultationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        
-        return false;
+        //create middleware from kernel at here
+        return true;
     }
 
     /**
@@ -23,7 +25,13 @@ class StoreConsultationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                'unique:consultation'
+            ],
+            
         ];
     }
 }
